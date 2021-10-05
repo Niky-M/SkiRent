@@ -1,0 +1,103 @@
+﻿<Window x:Class="SkiRent.Windows.Rent.BootsWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SkiRent.Windows.Rent"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1400"
+      Title="BootsWindow" WindowStartupLocation="CenterScreen" Width="1400" Height="800">
+
+    <StackPanel>
+        <Grid Background="DarkSeaGreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Прокат" FontSize="25" IsEnabled="False" Margin="5"/>
+            <Button Grid.Column="1" Content="Сервис" FontSize="25" Margin="5" Click="ButtonServiceClick"/>
+            <Button Grid.Column="2" Content="Тренировки" FontSize="25" Margin="5" Click="ButtonTrainsClick"/>
+            <Button Grid.Column="3" Content="Клиенты" FontSize="25" Margin="5" Click="ButtonClientsClick"/>
+            <Button Grid.Column="4" Content="Сотрудники" FontSize="25" Margin="5" Click="ButtonEmployeeClick"/>
+            <Button Grid.Column="5" Content="Прибыль" FontSize="25" Margin="5" Click="ButtonProfitClick"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Катающиеся" FontSize="25" Margin="5" Click="ButtonRentClick"/>
+            <Button Grid.Column="1" Content="Оборудование" FontSize="25" Margin="5" IsEnabled="False"/>
+            <Button Grid.Column="2" Content="Брони" FontSize="25" Margin="5" Click="ButtonReservationClick"/>
+            <Button Grid.Column="3" Content="Депозиты" FontSize="25" Margin="5" Click="ButtonDepozitClick"/>
+            <Button Grid.Column="4" Content="Параметры" FontSize="25" Margin="5" Click="ButtonSettingsClick"/>
+        </Grid>
+
+        <Grid Height="720">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <Label Content="Boots" HorizontalAlignment="Center"/>
+                <Button x:Name="skiButton" Content="ski" Click="ButtonSkiClick" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" Margin="5"/>
+                <Button x:Name="sticksButton" Content="sticks" Click="ButtonSticksClick" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" Margin="5"/>
+
+                <Label Content="Brand" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="brand" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="74,0"
+                    ItemsSource="{Binding Brands}" 
+                          SelectedValuePath="BrandId" 
+                          DisplayMemberPath="BrandName"/>
+
+                <Label Content="Style" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="style" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="74,0">
+                    <TextBlock Text="classsic"/>
+                    <TextBlock Text="skate"/>
+                </ComboBox>
+
+                <Label Content="Level" Grid.Column="1" HorizontalAlignment="Center" />
+                <ComboBox x:Name="level" Height="30" Width="150" HorizontalAlignment="Center" Margin="74,0"
+                          ItemsSource="{Binding Levels}" 
+                          SelectedValuePath="LevelId" 
+                          DisplayMemberPath="LevelName"/>
+
+
+                <Label Content="Bracing:"  HorizontalAlignment="Center"/>
+                <ComboBox x:Name="bracing"  Height="30" Width="150">
+                    <TextBlock Text="SNS"/>
+                    <TextBlock Text="NNN"/>
+                </ComboBox>
+
+                <Label Content="Size"/>
+                <TextBox x:Name="sizeTb" />
+
+                <Button x:Name="addBootsButton" Content="Add Boots" Click="ButtonAddClick" Height="20" Width="70" Margin="53,60,10,4"/>
+            </StackPanel>
+            <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Boots}" AutoGenerateColumns="False" Grid.Column="1" Grid.RowSpan="6" Margin="5" IsReadOnly="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                        <MenuItem Header="Удалить" />
+                        <MenuItem Header="Изменить"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding BootId}"/>
+                    <DataGridTextColumn Header="Brand" Binding="{Binding Brand.BrandName}"/>
+                    <DataGridTextColumn Header="Style" Binding="{Binding Style}"/>
+                    <DataGridTextColumn Header="Level" Binding="{Binding Level.LevelName}"/>
+                    <DataGridTextColumn Header="Bracing" Binding="{Binding Bracing}"/>
+                    <DataGridTextColumn Header="Size" Binding="{Binding Size}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </StackPanel>
+</Window>

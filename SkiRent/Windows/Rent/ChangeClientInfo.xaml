@@ -1,0 +1,26 @@
+﻿<Window x:Class="SkiRent.Windows.Rent.ChangeClientInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SkiRent.Windows.Rent"
+        mc:Ignorable="d"
+        Title="ChangeClientInfo" Height="370" Width="500">
+    <Grid>
+        <Border BorderThickness="5" BorderBrush="Black" CornerRadius="5" Margin="5" Padding="5">
+            <StackPanel>
+                <TextBlock Text="ФИО" Margin="5"/>
+                <TextBox x:Name="tbName" Margin="5"/>
+                <TextBlock Text="Телефон" Margin="5"/>
+                <TextBox x:Name="tbPhone" Margin="5"/>
+                <TextBlock Text="Рост" Margin="5"/>
+                <TextBox x:Name="tbHeight" Margin="5"/>
+                <TextBlock Text="Вес" Margin="5"/>
+                <TextBox x:Name="tbWeight" Margin="5"/>
+                <TextBlock Text="Ращмер обуви" Margin="5"/>
+                <TextBox x:Name="tbSize" Margin="5"/>
+                <Button x:Name="save" Content="Сохранить" Click="ButtonSaveClick" Margin="5"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

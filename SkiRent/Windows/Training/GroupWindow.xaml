@@ -1,0 +1,73 @@
+﻿<Window x:Class="SkiRent.Windows.Training.GroupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SkiRent.Windows.Training"
+        mc:Ignorable="d"
+        Title="GroupWindow" Height="800" Width="1400" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <Grid Background="DarkSeaGreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Прокат" FontSize="25" Margin="5" Click="ButtonRentClick"/>
+            <Button Grid.Column="1" Content="Сервис" FontSize="25" Margin="5" Click="ButtonServiceClick"/>
+            <Button Grid.Column="2" Content="Тренировки" FontSize="25" Margin="5" IsEnabled="False"/>
+            <Button Grid.Column="3" Content="Клиенты" FontSize="25" Margin="5" Click="ButtonClientsClick"/>
+            <Button Grid.Column="4" Content="Сотрудники" FontSize="25" Margin="5" Click="ButtonEmployeesClick"/>
+            <Button Grid.Column="5" Content="Прибыль" FontSize="25" Margin="5" Click="ButtonProfitClick"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Индивидуальные" FontSize="25" Margin="5" Click="ButtonTrainingClick"/>
+            <Button Grid.Column="1" Content="Груповые" FontSize="25" Margin="5" IsEnabled="False"/>
+        </Grid>
+
+        <Grid x:Name="LayoutRoot" Background="White" Height="600">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="ФИО" Grid.Column="0" Grid.Row="0" Margin="10,0,0,0"/>
+            <TextBox x:Name="name" MaxLength="50" Grid.Column="0" Grid.Row="0" Width="400" Height="20" HorizontalAlignment="Left" Margin="10"/>
+            <Label Content="Тренер" Grid.Row="1" Margin="10,0,0,0"/>
+            <TextBox x:Name="trainer" Grid.Row="1" Width="400" Height="20" HorizontalAlignment="Left" Margin="10"/>
+            <Label Content="Стоимость"  Grid.Row="3" Margin="10,0,0,0"/>
+            <TextBox x:Name="price" Grid.Row="3" Width="100" Height="20" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <Label Content="Продолжительность" Grid.Row="2" Margin="10,0,0,0"/>
+            <ComboBox Name="hoursSelect" Grid.Row="2" Width="200" Height="50">
+                <TextBlock Text="1 час"/>
+                <TextBlock Text="1,5 часа"/>
+                <TextBlock Text="2 часаы"/>
+            </ComboBox>
+            <Calendar x:Name="calendar" Grid.Row="5" Margin="10" Grid.RowSpan="2" HorizontalAlignment="Left"/>
+            <Button x:Name="today" Grid.Row="4"/>
+
+            <Button x:Name="confirm_name" Content="Подтвердить" Width="100" Height="30" Grid.Column="0" Grid.Row="5" Click="ConfirmName"/>
+            <WebBrowser x:Name="browser" Grid.Column="1" Grid.RowSpan="7">
+                <WebBrowser.ContextMenu> menu </WebBrowser.ContextMenu>
+            </WebBrowser>
+
+
+        </Grid>
+    </StackPanel>
+</Window>

@@ -1,0 +1,103 @@
+﻿<Window x:Class="SkiRent.OrderWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SkiRent"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1400"
+      Title="OrderWindow" FontSize="14" Height="800" Width="1400">
+
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="650" />
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="5" BorderBrush="Black" Padding="10" CornerRadius="10" BorderThickness="5" Margin="10">
+            <ScrollViewer x:Name="sv">
+            <StackPanel x:Name="sp">
+                <Grid Height="650">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Рост" Grid.Column="0" Grid.Row="0" Margin="50" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
+                    <TextBlock Text="Вес" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="50"/>
+                    <TextBlock Text="Обувь" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="30" Margin="50"/>
+
+                    <TextBox x:Name="heightTb" Grid.Row="0" Grid.Column="0"  Width="150" Height="30" VerticalAlignment="Top" Margin="0 50 0 0"/>
+                    <TextBox x:Name="weightTb" Grid.Row="0" Grid.Column="0" Width="150" Height="30" VerticalAlignment="Center"/>
+                    <TextBox x:Name="sizeTb" Grid.Row="0" Grid.Column="0" Width="150" Height="30" VerticalAlignment="Bottom" Margin="40, 50,40,50"/>
+
+                    <TextBlock Text="Лыжи" Grid.Column="1" Grid.Row="0" Margin="40 50" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30"/>
+                    <TextBlock Text="Ботинки" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="40"/>
+                    <TextBlock Text="Палки" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="30" Margin="40 50"/>
+
+                    <ComboBox x:Name="skiLevel" Text="ski level" Grid.Column="1" Grid.Row="0" Height="30" Width="150" VerticalAlignment="Top" Margin="51,50,41,50"
+                ItemsSource="{Binding Levels}" 
+                          SelectedValuePath="LevelId" 
+                          DisplayMemberPath="LevelName"/>
+                    <ComboBox x:Name="bootsLevel" Text="boots level" Grid.Column="1" Grid.Row="0" Height="30" Width="150" Margin="10 0 0 0"
+                ItemsSource="{Binding Levels}" 
+                          SelectedValuePath="LevelId" 
+                          DisplayMemberPath="LevelName"/>
+                    <ComboBox x:Name="sticksLevel" Text="sticks level" Grid.Column="1" Grid.Row="0" Height="30" Width="150" VerticalAlignment="Bottom" Margin="51,50,41,50"
+                ItemsSource="{Binding Levels}" 
+                          SelectedValuePath="LevelId" 
+                          DisplayMemberPath="LevelName"/>
+
+                    <TextBlock Text="Крепление:" Grid.Column="2" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,48,82,0"/>
+                    <ComboBox x:Name="bracing" Grid.Column="2" Grid.Row="0" Height="30" Width="150" VerticalAlignment="Top" Margin="90,50,40,0">
+                        <TextBlock Text="SNS"/>
+                        <TextBlock Text="NNN"/>
+                    </ComboBox>
+                    <TextBlock Text="Стиль:" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,10,0"/>
+                    <ComboBox x:Name="style" Grid.Column="2" Height="30" Width="150" VerticalAlignment="Center" Margin="50 0 0 0">
+                        <TextBlock Text="classic"/>
+                        <TextBlock Text="skate"/>
+                    </ComboBox>
+                    <Button x:Name="addCustomer" Content="Добавить посетителя" Grid.Column="4" Grid.Row="1" Height="50" Width="200" VerticalAlignment="Bottom" Margin="0 0 0 50" Click="addCustomerClick"/>
+                    <Button x:Name="complect" Content="собрать комплект" Click="ButtonComplectClick" Grid.Column="4" Grid.Row="1" Height="50" Width="200" Margin="0 0 0 50"/>
+                        <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="Black" Padding="10" BorderThickness="5" CornerRadius="10">
+                            <StackPanel>
+                                <TextBlock x:Name="skiLabel" Text="Лыжи: " VerticalAlignment="Top" Margin="10,41,10,0"/>
+                                <TextBlock x:Name="bootsLabel" Text="Ботинки: " VerticalAlignment="Center" Margin="10"/>
+                                <TextBlock x:Name="sticksLabel" Text="Палки: " VerticalAlignment="Bottom" Margin="10"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        </Border>
+        <TextBlock x:Name="name" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Height="20"/>
+
+        <TextBlock Text="Длительность катания:" Grid.Column="2" Grid.Row="2"/>
+        <ComboBox x:Name="rentTime"  Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="200" Height="40">
+            <TextBlock Text="1 час"/>
+            <TextBlock Text="2 часа"/>
+            <TextBlock Text="3 часа"/>
+            <TextBlock Text="день"/>
+        </ComboBox>
+
+        <TextBlock x:Name="date" Text="Дата и время: " Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="19" Width="92"/>
+        <TextBlock x:Name="priceLabel" Text="Цена: " Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="162" Height="46"/>
+        <Button x:Name="calculateButton" Content="расчитать" Click="calculateButtonClick" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Height="23" Width="68"/>
+
+        <Button x:Name="checkoutButton" Content="оформить" Click="checkoutButtonClick" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="68"/>
+    </Grid>
+</Window>

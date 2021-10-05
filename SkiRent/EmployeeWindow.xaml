@@ -1,0 +1,92 @@
+﻿<Window x:Class="SkiRent.EmployeeWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SkiRent"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1400"
+        Height="800" Width="1400"
+      Title="EmployeeWindow" WindowStartupLocation="CenterScreen">
+
+    <Border  BorderThickness="10" BorderBrush="#FF513B80">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Background="#FF4D4C4F">
+                <Button Grid.Row="0" Content="Прокат" FontSize="25" Margin="5" Click="ButtonRentClick"/>
+                <Button Grid.Row="1" Content="Сервис" FontSize="25" Margin="5" Click="ButtonServiceClick"/>
+                <Button Grid.Row="2" Content="Тренировки" FontSize="25" Margin="5" Click="ButtonTrainsClick"/>
+                <Button Grid.Row="3" Content="Клиенты" FontSize="25" Margin="5" Click="ButtonClientsClick"/>
+                <Button Grid.Row="4" Content="Сотрудники" FontSize="25" Margin="5" IsEnabled="False"/>
+                <Button Grid.Row="5" Content="Прибыль" FontSize="25" Margin="5" Click="ButtonProfitClick"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <!--<Grid Background="DarkSeaGreen">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Прокат" FontSize="25" Margin="5" Click="ButtonRentClick"/>
+                    <Button Grid.Column="1" Content="Сервис" FontSize="25" Margin="5" Click="ButtonServiceClick"/>
+                    <Button Grid.Column="2" Content="Тренировки" FontSize="25" Margin="5" Click="ButtonTrainsClick"/>
+                    <Button Grid.Column="3" Content="Клиенты" FontSize="25" Margin="5" Click="ButtonClientsClick"/>
+                    <Button Grid.Column="4" Content="Сотрудники" FontSize="25" Margin="5" IsEnabled="False"/>
+                    <Button Grid.Column="5" Content="Прибыль" FontSize="25" Margin="5" Click="ButtonProfitClick"/>
+                </Grid>-->
+
+                <Grid Height="700">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Height="690" VerticalAlignment="Top">
+                        <Label Content="Добавление нового сотрудника" HorizontalAlignment="Center"/>
+                        <Label Content="ФИО:"/>
+                        <TextBox x:Name="stuffName" Margin="5,0,5,0"/>
+                        <Label Content="Пароль"/>
+                        <TextBox x:Name="password" Margin="5 0 5 0" />
+                        <Label Content="Телефон:"/>
+                        <TextBox x:Name="stuffPhone" Margin="5,0,5,0"/>
+                        <Label Content="Должность:"/>
+
+                        <StackPanel Orientation="Vertical">
+                            <CheckBox Content="Администратор" Margin="10,5,10,5"/>
+                            <CheckBox Content="Сотрулник проката" Margin="10,5,10,5"/>
+                            <CheckBox Content="Тренер" Margin="10,5,10,5"/>
+                            <CheckBox Content="Сервисмен" Margin="10,5,10,5"/>
+                        </StackPanel>
+
+                        <Separator Height="10"/>
+                        <Button x:Name="add" Content="Добавить сотрудника" Click="ButtonAddClick" Width="150" HorizontalAlignment="Left" Margin="10"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Stuffs}" AutoGenerateColumns="False" Grid.Column="1" Grid.RowSpan="6" Margin="5" IsReadOnly="True">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu StaysOpen="True" Background="WhiteSmoke">
+                                <MenuItem Header="Удалить" />
+                                <MenuItem Header="Изменить"/>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding StuffId}"/>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
